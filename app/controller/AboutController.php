@@ -5,7 +5,7 @@ require_once('../app/controller/BaseController.php');
 class AboutController extends BaseController
 {
 
-    //Mostrar todos los usuarios
+    //Mostrar about 
 
     public function actionAbout()
     {

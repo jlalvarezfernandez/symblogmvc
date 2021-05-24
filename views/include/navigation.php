@@ -13,7 +13,7 @@ echo "<a href=\"#\">Contact</a>";
 echo "</li>";
 if ($_SESSION['perfil'] == 'usuario') {
     echo "<li>";
-    echo "<a href=\"#\">Dashboard</a>";
+    echo "<a href=\"".DIRURL."/admin\">Dashboard</a>";
     echo "</li>";
     
 }

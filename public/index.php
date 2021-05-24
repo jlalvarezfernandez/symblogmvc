@@ -4,6 +4,7 @@ require_once('../app/controller/UserController.php');
 require_once('../app/controller/BlogController.php');
 require_once('../app/controller/AuthController.php');
 require_once('../app/controller/AboutController.php');
+require_once('../app/controller/AdminController.php');
 require_once('../app/models/Router.php');
 
 
@@ -67,6 +68,14 @@ $route->addRoute(array(
     'name' => 'About',
     'path' => '/^\/about$/',
     'action' => [AboutController::class, 'actionAbout'],
+    'auth' => false
+));
+
+// ruta opciones administrador
+$route->addRoute(array(
+    'name' => 'Admin',
+    'path' => '/^\/admin$/',
+    'action' => [AdminController::class, 'actionAdmin'],
     'auth' => false
 ));
 
