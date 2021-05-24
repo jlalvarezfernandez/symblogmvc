@@ -9,7 +9,7 @@ echo "<li>";
 echo "<a href=\"".DIRURL."/about\">About</a>";
 echo "</li>";
 echo "<li>";
-echo "<a href=\"#\">Contact</a>";
+echo "<a href=\"".DIRURL."/mensaje\">Contact</a>";
 echo "</li>";
 if ($_SESSION['perfil'] == 'usuario') {
     echo "<li>";

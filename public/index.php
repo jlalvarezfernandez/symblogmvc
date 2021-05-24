@@ -5,6 +5,7 @@ require_once('../app/controller/BlogController.php');
 require_once('../app/controller/AuthController.php');
 require_once('../app/controller/AboutController.php');
 require_once('../app/controller/AdminController.php');
+require_once('../app/controller/MensajeController.php');
 require_once('../app/models/Router.php');
 
 
@@ -76,6 +77,14 @@ $route->addRoute(array(
     'name' => 'Admin',
     'path' => '/^\/admin$/',
     'action' => [AdminController::class, 'actionAdmin'],
+    'auth' => array('usuario')
+));
+
+// ruta mensaje
+$route->addRoute(array(
+    'name' => 'Mensaje',
+    'path' => '/^\/mensaje$/',
+    'action' => [MensajeController::class, 'actionMensaje'],
     'auth' => array('usuario')
 ));
 
