@@ -25,7 +25,7 @@
 		<header id="header">
 			<div class="top">
 
-				<?php include('include/navigation.php');?>
+				<?php include('include/navigation.php'); ?>
 
 			</div>
 
@@ -42,22 +42,23 @@
 
 		</header>
 		<div class="infoUsuario">
-		<?php
-		include('include/cabeceraUsuario_view.php')
-		?>
+			<?php
+			include('include/cabeceraUsuario_view.php')
+			?>
 
 		</div>
 		<?php
-		
-		foreach ($data as $key => $blog) { ?>
+
+		foreach ($data[0] as $key => $blog) { ?>
 
 
 			<article class="blog">
 				<div class="date"><time datetime="<?php echo $blog['created_at']; ?>"></time></div>
 				<header>
-					<h2><a href="#"><?php echo $blog['title'] ?></a></h2>
+					<h2><a href="<?php echo DIRPUBLIC . '/index.php/blog/' . $blog['id'] ?>"><?php echo $blog['title'] ?></a></h2>
 				</header>
 
+				</header>
 				<img src="<?php echo DIRPUBLIC . '/img/' . $blog['image'] ?>" />
 				<div class="snippet">
 					<p><?php echo $blog['blog'] ?></p>
@@ -67,13 +68,16 @@
 				<footer class="meta">
 					<p>Comments: <a href="#"> </a></p>
 					<p>Posted by <span class="highlight"><?php echo $blog['author'] ?></span> at </p>
-					<p>Tags: <span class="highlight"><?php echo $blog['tags'] ?></span></p>
+					<p>Tags: <a href="#" class="highlight"><?php echo $blog['tags'] ?></a></p>
 				</footer>
 			</article>
 		<?php }	?>
 
 
 		<aside class="sidebar">
+			<?php
+			include('include/tags_view.php');
+			?>
 
 		</aside>
 

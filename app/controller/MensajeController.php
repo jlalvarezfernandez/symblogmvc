@@ -11,6 +11,30 @@ class MensajeController extends BaseController
     {
         $datos = array('Mensaje' => 'Contacto');
         $this->renderHtml('../views/listMensajes_view.php', $datos);
+        
+        $procesaFormulario = false;
+        $titulo = "";
+        $descripcion = "";
+        $autor = "";
+
+        if (!empty($_POST['enviar'])) {
+            $titulo = $_POST['titulo'];
+            $descripcion = $_POST['descripcion'];
+            $autor = $_POST['autor'];
+            $procesaFormulario = true;
+        } 
+        if ($procesaFormulario) {
+            $objectMensaje = Mensaje::getInstancia();
+            $objectMensaje->setTitulo($titulo);
+            $objectMensaje->setDescripcion($descripcion);
+            $objectMensaje->setAutor($autor);
+            $objectMensaje->set();
+            header('location: ' . DIRURL . '/blog/list');
+
+           
+            
+        }
+        
     }
 
    

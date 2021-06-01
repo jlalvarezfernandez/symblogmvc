@@ -1,32 +1,12 @@
 <?php
 require_once('../app/controller/BaseController.php');
-require_once('../app/models/Users.php');
-require_once("../views/include/funciones.php");
+require_once('../app/models/Registro.php');
+include_once("../views/include/funciones.php");
 
-
-class UserController extends BaseController
+class RegistroController extends BaseController
 {
 
-    //Mostrar todos los usuarios
-
-    public function actionListUser()
-    {
-        $users = [];
-        $objectUser = Users::getInstancia();
-        $users = $objectUser->getAllUsers();
-
-        $this->renderHtml('../views/listUsers_view.php', $users);
-    }
-
-    // Mostar solo un usuario
-    public function showUser($id)
-    {
-       
-        $objectUser = Users::getInstancia();
-        $users = $objectUser->get($id);
-
-        $this->renderHtml('../views/userOnly_view.php', $users);
-    }
+    //Mostrar todos los mensajes
 
     public function actionRegistro()
     {
@@ -62,7 +42,7 @@ class UserController extends BaseController
                 $procesaFormulario = false;
             }
             if ($procesaFormulario) {
-                $user = Users::getInstancia();
+                $user = Registro::getInstancia();
                 $user->setEmail($email);
                 $user->setPassword($pass1);
                 $user->setPerfil('usuario');
@@ -73,6 +53,4 @@ class UserController extends BaseController
             }
         }
     }
-
-
 }

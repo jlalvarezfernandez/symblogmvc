@@ -43,7 +43,10 @@
         </header>
         <div class="infoUsuario">
             <?php
-            include('include/cabeceraUsuario_view.php')
+            if ($_SESSION['perfil'] == 'usuario' || $_SESSION['perfil'] == 'administrador') {
+                include('include/cabeceraUsuario_view.php');
+            }
+            
             ?>
 
         </div>

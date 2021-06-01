@@ -29,6 +29,7 @@ class Mensaje extends DBAbstractModel
     private $titulo;
     private $descripcion;
     private $autor;
+    private $fechaHora;
     private $created_at;
     private $updated_at;
 
@@ -110,17 +111,37 @@ class Mensaje extends DBAbstractModel
 
         return $this;
     }
+    /**
+     * Get the value of fechaHora
+     */ 
+    public function getFechaHora()
+    {
+        return $this->fechaHora;
+    }
+
+    /**
+     * Set the value of fechaHora
+     *
+     * @return  self
+     */ 
+    public function setFechaHora($fechaHora)
+    {
+        $this->fechaHora = $fechaHora;
+
+        return $this;
+    }
 
     // Hacemos los metodos del CRUD (create o set, read o get, update o edit, delete)
 
     // metodo set o create
     public function set()
     {
-        $this->query = "INSERT INTO mensaje (titulo, descripcion, autor) VALUES (:titulo, :descripcion, :autor)";
+        $this->query = "INSERT INTO mensaje (titulo, descripcion, autor,fechaHora) VALUES (:titulo, :descripcion, :autor, :fechaHora)";
 
         $this->parametros['titulo'] = $this->titulo;
         $this->parametros['descripcion'] = $this->descripcion;
         $this->parametros['autor'] = $this->autor;
+        $this->parametros['fechaHora'] = date("Y-m-d H:i:s");
         $this->get_results_from_query();
         $this->mensaje = "Mensaje añadido ";
     }
@@ -153,10 +174,11 @@ class Mensaje extends DBAbstractModel
 
     public function edit($id = '')
     {
-        $this->query = "UPDATE mensaje SET titulo=:titulo, descripcion=:descripcion, autor=:autor WHERE id=:id";
+        $this->query = "UPDATE mensaje SET titulo=:titulo, descripcion=:descripcion, autor=:autor fechaHora=:fechaHora WHERE id=:id";
         $this->parametros['titulo'] = $this->titulo;
         $this->parametros['descripcion'] = $this->descripcion;
         $this->parametros['autor'] = $this->autor;
+        $this->parametros['fechaHora'] = $this->fechaHora;
         $this->parametros['id'] = $id;
 
         $this->get_results_from_query();
@@ -172,6 +194,5 @@ class Mensaje extends DBAbstractModel
         $this->get_results_from_query();
         $this->mensaje = "Mensaje ELIMINADO";
     }
-
 
 }

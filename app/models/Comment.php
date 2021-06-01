@@ -240,4 +240,13 @@ class Comment extends DBAbstractModel
         $this->get_results_from_query();
         $this->mensaje = "Comentario ELIMINADO";
     }
+
+    public function validar($id = '')
+    {
+        $this->query = "UPDATE comment SET approved=:approved WHERE id=:id";
+        $this->parametros['approved'] = 1;
+        $this->parametros['id'] = $id;
+        $this->get_results_from_query();
+        $this->mensaje = "Comentario modificado";
+    }
 }

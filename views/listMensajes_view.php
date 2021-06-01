@@ -52,8 +52,8 @@
             <header id="header">
                 <h2>Mensaje Contacto</h2>
                 <?php
-            include('include/form_msg.php')
-            ?>
+                include('include/form_msg.php')
+                ?>
             </header>
 
         </article>

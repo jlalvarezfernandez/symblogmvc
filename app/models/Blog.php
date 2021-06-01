@@ -33,6 +33,8 @@ class Blog extends DBAbstractModel
     private $tags;
     // array que contendrá todos los comentarios que pertenecen a un blog
     private $comment = array();
+    private $commentAprobado = array();
+    private $commentNoAprobado = array();
     private $created_at;
     private $updated_at;
 
@@ -198,7 +200,11 @@ class Blog extends DBAbstractModel
             //Llamamos al método
             $this->comment = $this->getCommentsBlog($id);
             // ahora en ese array le asignamos los comentarios que nos devuelve la consulta del metodo de los comentarios del blog
+            $this->commentAprobado = $this->getApprovedCommentsBlog($id);
+            $this->commentNoAprobado = $this->getNotApprovedCommentsBlog($id);
             $rowsBlog[0]['comment'] = $this->comment;
+            $rowsBlog[0]['commentAprobado'] = $this->commentAprobado;
+            $rowsBlog[0]['commentNoAprobado'] = $this->commentNoAprobado;
 
             $this->mensaje = "Blog encontrado";
         } else {
@@ -242,6 +248,15 @@ class Blog extends DBAbstractModel
         return $this->rows;
     }
 
+    public function getAllTags()
+    {
+        $this->query = "SELECT tags FROM blog";
+        $this->get_results_from_query();
+        $this->mensaje = "Todos los Tags";
+        return $this->rows;
+    }
+
+
 
     // método privado para recoger todos los comentarios que pertenecen a un blog
     private function getCommentsBlog($blog_id)
@@ -252,4 +267,24 @@ class Blog extends DBAbstractModel
         $this->mensaje = "comentarios del blog encontrados";
         return $this->rows;
     }
+
+    private function getApprovedCommentsBlog($blog_id)
+    {
+        $this->query = "SELECT * FROM comment WHERE blog_id=:blog_id AND approved=1";
+        $this->parametros['blog_id'] = $blog_id;
+        $this->get_results_from_query();
+        $this->mensaje = "comentarios del blog encontrados";
+        return $this->rows;
+    }
+
+    private function getNotApprovedCommentsBlog($blog_id)
+    {
+        $this->query = "SELECT * FROM comment WHERE blog_id=:blog_id AND approved=0";
+        $this->parametros['blog_id'] = $blog_id;
+        $this->get_results_from_query();
+        $this->mensaje = "comentarios del blog encontrados";
+        return $this->rows;
+    }
+
+
 }

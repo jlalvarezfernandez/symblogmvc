@@ -16,6 +16,8 @@ if ($_SESSION['perfil'] == 'invitado') {
     echo "<br>";
     echo "<input type=\"submit\" name=\"enviar\" value=\"enviar\">";
     echo "</form>";
+    echo "No tienes cuenta?";
+    echo "<a href=\"".DIRURL."/registro\">REGISTRATE</a>";
 } else {
     echo "<a href=\"http://localhost/symblog/public/index.php/user/logout\"><h3>LogOut</h3></a>";
 }

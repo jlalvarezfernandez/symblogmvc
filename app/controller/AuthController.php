@@ -27,7 +27,7 @@ class AuthController extends BaseController
             
             
             if (count($datosLogin) == 1) {
-                $_SESSION['perfil'] = 'usuario';
+                $_SESSION['perfil'] = $datosLogin[0]['perfil'];
                 $_SESSION["email"] = $datosLogin[0]['email'];
                
                

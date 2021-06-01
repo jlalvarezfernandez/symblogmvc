@@ -28,6 +28,7 @@
                 <?php include('include/navigation.php'); ?>
 
             </div>
+           
 
             <h2>
 
@@ -41,38 +42,15 @@
             </h3>
 
         </header>
-        <div class="infoUsuario">
-            <?php
-            include('include/cabeceraUsuario_view.php')
+        
+        
+        <div>
+        <?php
+            include('include/registro_form.php')
             ?>
-
         </div>
 
-        <article class="blog">
-            <header id="header">
-                <h2>Dashboard</h2>
-            </header>
-            <?php
-
-            echo "Opciones del administrador: ";
-            echo "<br>";
-            echo "<br>";
-            echo "<table>";
-            echo "<tr><td>Perfil</td><td>Usuario</td></tr>";
-            foreach ($data as $key => $value) {
-                echo "<tr>";
-                echo "<td>";
-                echo $value['perfil'];
-                echo "</td>";
-                echo "<td>";
-                echo $value['email'];
-                echo "</td>";
-                echo "<tr>";
-            }
-            echo "</table>";
-            ?>
-
-        </article>
+       
 
 
 
@@ -82,7 +60,7 @@
 
         <div id="footer">
             Link Manager
-        </div>
+        </div> 
     </section>
 </body>
 
